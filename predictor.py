@@ -10,7 +10,6 @@ import os
 class CovidPatientStatePredictor:
     def __init__(self, model_path):
         self.model = load_model(model_path)
-        self.dinamic_fact = []
         imputer_file = open(os.path.sep.join([model_path, 'imputer.pkl']), 'rb')
         scaler_file = open(os.path.sep.join([model_path, 'scaler.pkl']), 'rb')
         self.imputer = pickle.load(imputer_file)
@@ -41,4 +40,5 @@ class CovidPatientStatePredictor:
         inveresed_predicted_data = self._inverse_transform_data(predicted_data)
         return inveresed_predicted_data
 
-
+if __name__=="__main__":
+    pass
