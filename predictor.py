@@ -11,38 +11,38 @@ import os
 class CovidPatientStatePredictor:
     def __init__(self, model_path):
         self.model = load_model(model_path)
-        imputer_file = open(os.path.sep.join([model_path, 'imputer.pkl']), 'rb')
-        scaler_file = open(os.path.sep.join([model_path, 'scaler.pkl']), 'rb')
+        imputer_file = open("models/iterative_imputer.pkl", 'rb')
+        scaler_file = open("models/standard_scaler.pkl", 'rb')
         self.imputer = pickle.load(imputer_file)
         self.scaler  = pickle.load(scaler_file)
+        self.columns = []
+        self.index   = []
 
-    def _impute_nan(self, df):
-        return self.imputer.fit_transform(X)
-
-    def _scale_transform_data(self, X):
-        return self.scaler.transform(X)
+    def _prepare_time_series(self, df: pandas.DataFrame):
+        dinam_fact_df = df.iloc[:,29:42]
+        stat_fact_df  = df.iloc[:,:29]
+        stat_fact_df  = pd.concat([stat_fact_df, df.iloc[:, 42]])
+        stat_fact_df  = pd.concat([stat_fact_df, df.iloc[:, 42:]])
+        df_imputed = self.imputer.fit_transform(dinam_fact_df)
+        df_scaled = self.scaler.transform(df_imputed)
+        dinam_fact_df = pd.DataFrame(data=df_scaled, columns = dinam_fact_df.columns, index=dinam_fact_df.index)
+        return dinam_fact_df, stat_fact_df
 
     def _inverse_transform_data(self, Y_scaled_predicted):
         y_pred_inv = self.scaler.inverse_transform(Y_scaled_predicted)[0]
-        y_unnorm_pred = [float("{:0.2f}".format(i)) for i in y_pred_inv]
-        return y_unnorm_pred
+        result_df = pd.DataFrame(data=y_pred_inv, columns=self.columns[29:42])
+        return  result_df
 
-    def _prepare_time_series(self, df: pandas.DataFrame):
-        return df
-
-    def set_model(self, model_path):
-        self.model = load_model(model_path)
-
-    def predict(self, df, to_csv=True):
-        prepared_data = self._prepare_time_series(df)
-        imputed_data = self._impute_nan(prepared_data)
-        scaled_transformed_data = self._scale_transform_data(imputed_data)
-        predicted_data = self.model.predict(np.array([scaled_transformed_data]))
+    def predict(self, df):
+        self.columns = df.columns
+        self.index = df.index
+        dinam_df, stat_df = self._prepare_time_series(df)
+        predicted_data = self.model.predict(np.array(dinam_df))
         inveresed_predicted_data = self._inverse_transform_data(predicted_data)
         return inveresed_predicted_data
 
 if __name__=="__main__":
-    model = CovidPatientStatePredictor("LSTM13")
+    model = CovidPatientStatePredictor("models/LSTM13")
     df = pd.read_csv("example/input.csv")
     result = model.predict(df)
     result.to_csv("example/output.csv")
