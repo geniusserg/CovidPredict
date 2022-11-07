@@ -1,3 +1,4 @@
+import pandas as pd
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 from sklearn.linear_model import LinearRegression
@@ -15,7 +16,7 @@ class CovidPatientStatePredictor:
         self.imputer = pickle.load(imputer_file)
         self.scaler  = pickle.load(scaler_file)
 
-    def _impute_nan(self, X):
+    def _impute_nan(self, df):
         return self.imputer.fit_transform(X)
 
     def _scale_transform_data(self, X):
@@ -26,14 +27,14 @@ class CovidPatientStatePredictor:
         y_unnorm_pred = [float("{:0.2f}".format(i)) for i in y_pred_inv]
         return y_unnorm_pred
 
-    def _prepare_time_series(self, df:pandas.DataFrame):
+    def _prepare_time_series(self, df: pandas.DataFrame):
         return df
 
     def set_model(self, model_path):
         self.model = load_model(model_path)
 
-    def predict(self, data):
-        prepared_data = self._prepare_time_series(data)
+    def predict(self, df, to_csv=True):
+        prepared_data = self._prepare_time_series(df)
         imputed_data = self._impute_nan(prepared_data)
         scaled_transformed_data = self._scale_transform_data(imputed_data)
         predicted_data = self.model.predict(np.array([scaled_transformed_data]))
@@ -41,4 +42,7 @@ class CovidPatientStatePredictor:
         return inveresed_predicted_data
 
 if __name__=="__main__":
-    pass
+    model = CovidPatientStatePredictor("LSTM13")
+    df = pd.read_csv("example/input.csv")
+    result = model.predict(df)
+    result.to_csv("example/output.csv")
