@@ -1,0 +1,130 @@
+{
+    "total_pipeline_operations": [
+        "gbr",
+        "isolation_forest_reg",
+        "scaling",
+        "rfr"
+    ],
+    "depth": 4,
+    "nodes": [
+        {
+            "operation_id": 3,
+            "operation_type": "gbr",
+            "operation_name": "GradientBoostingRegressor",
+            "custom_params": {
+                "alpha": 0.8270767334551146,
+                "learning_rate": 0.08405269623033144,
+                "loss": "huber",
+                "max_depth": 1,
+                "max_features": 0.4886857066406072,
+                "min_samples_leaf": 2,
+                "min_samples_split": 20,
+                "n_estimators": 100,
+                "subsample": 0.20296329516570155
+            },
+            "params": {
+                "alpha": 0.8270767334551146,
+                "learning_rate": 0.08405269623033144,
+                "loss": "huber",
+                "max_depth": 1,
+                "max_features": 0.4886857066406072,
+                "min_samples_leaf": 2,
+                "min_samples_split": 20,
+                "n_estimators": 100,
+                "subsample": 0.20296329516570155
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "isolation_forest_reg",
+            "operation_name": "IsolationForestRegImplementation",
+            "custom_params": {
+                "bootstrap": false,
+                "max_features": 0.9762840898231335,
+                "max_samples": 0.7330194533722475
+            },
+            "params": {
+                "bootstrap": false,
+                "max_features": 0.9762840898231335,
+                "max_samples": 0.7330194533722475
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                3,
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.3615742386598886,
+                "min_samples_leaf": 21,
+                "min_samples_split": 2,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.3615742386598886,
+                "min_samples_leaf": 21,
+                "min_samples_split": 2,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(((/n_gbr_{'alpha': 0.8270767334551146, 'learning_rate': 0.08405269623033144, 'loss': 'huber', 'max_depth': 1, 'max_features': 0.4886857066406072, 'min_samples_leaf': 2, 'min_samples_split': 20, 'n_estimators': 100, 'subsample': 0.20296329516570155};;/n_isolation_forest_reg_{'bootstrap': False, 'max_features': 0.9762840898231335, 'max_samples': 0.7330194533722475};)/n_scaling_{};)/n_scaling_{};)/n_rfr_{'n_jobs': -1, 'bootstrap': False, 'max_features': 0.3615742386598886, 'min_samples_leaf': 21, 'min_samples_split': 2, 'n_estimators': 100}"
+}

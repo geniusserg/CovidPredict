@@ -1,0 +1,115 @@
+{
+    "total_pipeline_operations": [
+        "scaling",
+        "isolation_forest_reg",
+        "fast_ica",
+        "rfr"
+    ],
+    "depth": 4,
+    "nodes": [
+        {
+            "operation_id": 2,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "isolation_forest_reg",
+            "operation_name": "IsolationForestRegImplementation",
+            "custom_params": {
+                "bootstrap": false,
+                "max_features": 0.5100648625566536,
+                "max_samples": 0.44900688952842444
+            },
+            "params": {
+                "bootstrap": false,
+                "max_features": 0.5100648625566536,
+                "max_samples": 0.44900688952842444
+            },
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "fast_ica",
+            "operation_name": "FastICAImplementation",
+            "custom_params": {
+                "n_components": 7
+            },
+            "params": {
+                "n_components": 7
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                2,
+                3,
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.35206001704193085,
+                "min_samples_leaf": 19,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.35206001704193085,
+                "min_samples_leaf": 19,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(((/n_scaling_{};)/n_isolation_forest_reg_{'bootstrap': False, 'max_features': 0.5100648625566536, 'max_samples': 0.44900688952842444};;/n_fast_ica_{'n_components': 7};;/n_scaling_{};)/n_scaling_{};)/n_rfr_{'n_jobs': -1, 'bootstrap': True, 'max_features': 0.35206001704193085, 'min_samples_leaf': 19, 'min_samples_split': 8, 'n_estimators': 100}"
+}
