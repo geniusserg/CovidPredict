@@ -59,28 +59,23 @@ X_test.shape)
 X_train = X_train.reshape(-1, 47)
 X_test = X_test.reshape(-1, 47)
 
-f = open("FEDOT_STATISTICS", "w")
 models = {}
-scores = {}
-dinam_fact_columns = df.columns[29:42]
+dinam_fact_columns = [df.columns[29:42][1]]
+
 for param_idx, param_name in enumerate(dinam_fact_columns):
     model = Fedot(problem='regression', timeout=10, n_jobs=-1)
     try:
         obtained_pipeline = model.fit(features=X_train, target=y_train[:, param_idx])
         models[param_name] = (model, obtained_pipeline)
-        obtained_pipeline.save(f"models/fedot/fedot_regress_one_window_param_{param_idx}.json", datetime_in_path=False)
-        y_pred = models[param_name][0].predict(X_test)
-        mask = ~np.isnan(y_test[:, param_idx])
-        y_check = y_test[mask, param_idx]
-        y_pred = y_pred[mask]
-        r2_res = r2_score(y_check, y_pred, multioutput="raw_values")
-        mse = mean_squared_error(y_check, y_pred)
-        scores[param_name] = [r2_res[0], mse]
-        f.write(str([param_name, r2_res[0], mse]))    
+        obtained_pipeline.save(f"models/fedot/fedot_regress_one_window_param_1.json", datetime_in_path=False)  
         print(f"SAVED {param_name}")
     except:
-        print(f"FAILED {param_name}")
-        f.write(f"FAILED {param_name}")
-f.close()
+        try:
+            obtained_pipeline = model.fit(features=X_train, target=y_train[:, param_idx])
+            models[param_name] = (model, obtained_pipeline)
+            obtained_pipeline.save(f"models/fedot/fedot_regress_one_window_param_1.json", datetime_in_path=False)  
+            print(f"SAVED 2 attempt {param_name}")
+        except:
+            print(f"FAILED {param_name}")
     
 
