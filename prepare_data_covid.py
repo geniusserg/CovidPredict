@@ -23,7 +23,7 @@ def prepare_dynamic(df_input, window=3, test_size=0.2):
     df_idx = df_grouped[df_grouped>=window+1].index
     scal_model = MinMaxScaler()
     df_scaled = scal_model.fit_transform(df.iloc[:, 29:43])
-    imputer = IterativeImputer()
+    imputer = IterativeImputer(max_iter=50)
     df_imputed = imputer.fit_transform(df_scaled)
     df.iloc[:, 29:43] = df_imputed
     for i in df_idx:
@@ -62,7 +62,7 @@ def prepare_data_with_static(df_input, window=3, test_size=0.2):
         for j in range(len(df.loc[(i)])-window):
             wind = df.loc[(i, j): (i, j+window-1)]
             X.append(wind.iloc[:, :47])
-            y.append(df.loc[(i, window)].iloc[29:42])
+            y.append(df.loc[(i, j+window)].iloc[29:42])
     X, y = np.array(X, dtype=np.float32), np.array(y, dtype=np.float32)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size)
     X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size=1/2)
