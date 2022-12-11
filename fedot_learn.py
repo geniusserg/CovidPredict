@@ -53,29 +53,30 @@ def prepare_data_with_dynamic_window(df_input, window=1, test_size=0.2):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size)
     return (X_train, y_train), (X_test, y_test)
 
-(X_train, y_train), (X_test, y_test) = prepare_data_with_dynamic_window(df, window=1)
-print("Test train shapes:", X_train.shape,
-X_test.shape)
-X_train = X_train.reshape(-1, 47)
-X_test = X_test.reshape(-1, 47)
+for WINDOW in range(1, 5):
+    (X_train, y_train), (X_test, y_test) = prepare_data_with_dynamic_window(df, window=WINDOW)
+    print("Test train shapes:", X_train.shape,
+    X_test.shape)
+    X_train = X_train.reshape(-1, WINDOW*47)
+    X_test = X_test.reshape(-1, WINDOW*47)
 
-models = {}
-dinam_fact_columns = [df.columns[29:42][1]]
+    models = {}
+    dinam_fact_columns = df.columns[29:42]
 
-for param_idx, param_name in enumerate(dinam_fact_columns):
-    model = Fedot(problem='regression', timeout=10, n_jobs=-1)
-    try:
-        obtained_pipeline = model.fit(features=X_train, target=y_train[:, param_idx])
-        models[param_name] = (model, obtained_pipeline)
-        obtained_pipeline.save(f"models/fedot/fedot_regress_one_window_param_1.json", datetime_in_path=False)  
-        print(f"SAVED {param_name}")
-    except:
+    for param_idx, param_name in enumerate(dinam_fact_columns):
+        model = Fedot(problem='regression', timeout=20, n_jobs=-1)
         try:
             obtained_pipeline = model.fit(features=X_train, target=y_train[:, param_idx])
             models[param_name] = (model, obtained_pipeline)
-            obtained_pipeline.save(f"models/fedot/fedot_regress_one_window_param_1.json", datetime_in_path=False)  
-            print(f"SAVED 2 attempt {param_name}")
+            obtained_pipeline.save(f"fedot_w{WINDOW}/fedot_regress_one_window_param_{param_idx}.json", datetime_in_path=False)  
+            print(f"SAVED {param_name}")
         except:
-            print(f"FAILED {param_name}")
+            try:
+                obtained_pipeline = model.fit(features=X_train, target=y_train[:, param_idx])
+                models[param_name] = (model, obtained_pipeline)
+                obtained_pipeline.save(f"fedot_w{WINDOW}/fedot_regress_one_window_param_{param_idx}.json", datetime_in_path=False)  
+                print(f"SAVED 2 attempt {param_name}")
+            except:
+                print(f"FAILED {param_name}")
     
 
