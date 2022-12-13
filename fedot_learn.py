@@ -53,7 +53,7 @@ def prepare_data_with_dynamic_window(df_input, window=1, test_size=0.2):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size)
     return (X_train, y_train), (X_test, y_test)
 
-for WINDOW in range(3, 4):
+for WINDOW in range(1, 5):
     (X_train, y_train), (X_test, y_test) = prepare_data_with_dynamic_window(df, window=WINDOW)
     print("Test train shapes:", X_train.shape,
     X_test.shape)
@@ -61,10 +61,7 @@ for WINDOW in range(3, 4):
     X_test = X_test.reshape(-1, WINDOW*47)
 
     models = {}
-    dinam_fact_columns = []
-    dinam_fact_columns.append(df.columns[29:42][9])
-    dinam_fact_columns.append(df.columns[29:42][4])
-    dinam_fact_columns.append(df.columns[29:42][2])
+    dinam_fact_columns = df.columns[29:42]
 
     for param_idx, param_name in enumerate(dinam_fact_columns):
         model = Fedot(problem='regression', timeout=10, n_jobs=-1)
