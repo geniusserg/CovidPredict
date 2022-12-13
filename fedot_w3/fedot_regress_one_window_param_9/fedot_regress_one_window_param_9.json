@@ -1,0 +1,76 @@
+{
+    "total_pipeline_operations": [
+        "rfr",
+        "gbr"
+    ],
+    "depth": 2,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.28326196767054085,
+                "min_samples_leaf": 1,
+                "min_samples_split": 21,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.28326196767054085,
+                "min_samples_leaf": 1,
+                "min_samples_split": 21,
+                "n_estimators": 100
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "gbr",
+            "operation_name": "GradientBoostingRegressor",
+            "custom_params": {
+                "alpha": 0.754641802102426,
+                "learning_rate": 0.0015582282652530654,
+                "loss": "ls",
+                "max_depth": 1,
+                "max_features": 0.9300749148812073,
+                "min_samples_leaf": 20,
+                "min_samples_split": 15,
+                "n_estimators": 100,
+                "subsample": 0.133337713634766
+            },
+            "params": {
+                "alpha": 0.754641802102426,
+                "learning_rate": 0.0015582282652530654,
+                "loss": "ls",
+                "max_depth": 1,
+                "max_features": 0.9300749148812073,
+                "min_samples_leaf": 20,
+                "min_samples_split": 15,
+                "n_estimators": 100,
+                "subsample": 0.133337713634766
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(/n_rfr_{'n_jobs': -1, 'bootstrap': True, 'max_features': 0.28326196767054085, 'min_samples_leaf': 1, 'min_samples_split': 21, 'n_estimators': 100};)/n_gbr_{'alpha': 0.754641802102426, 'learning_rate': 0.0015582282652530654, 'loss': 'ls', 'max_depth': 1, 'max_features': 0.9300749148812073, 'min_samples_leaf': 20, 'min_samples_split': 15, 'n_estimators': 100, 'subsample': 0.133337713634766}"
+}

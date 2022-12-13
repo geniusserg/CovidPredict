@@ -1,16 +1,22 @@
 {
     "total_pipeline_operations": [
-        "scaling",
+        "poly_features",
         "treg"
     ],
     "depth": 2,
     "nodes": [
         {
             "operation_id": 1,
-            "operation_type": "scaling",
-            "operation_name": "ScalingImplementation",
-            "custom_params": {},
-            "params": {},
+            "operation_type": "poly_features",
+            "operation_name": "PolyFeaturesImplementation",
+            "custom_params": {
+                "degree": 2,
+                "interaction_only": false
+            },
+            "params": {
+                "degree": 2,
+                "interaction_only": false
+            },
             "nodes_from": [],
             "fitted_operation_path": [
                 "fitted_operations",
@@ -24,16 +30,16 @@
             "operation_name": "ExtraTreesRegressor",
             "custom_params": {
                 "bootstrap": true,
-                "max_features": 0.05028962374371168,
-                "min_samples_leaf": 19,
-                "min_samples_split": 7,
+                "max_features": 0.2430708704950384,
+                "min_samples_leaf": 9,
+                "min_samples_split": 10,
                 "n_estimators": 100
             },
             "params": {
                 "bootstrap": true,
-                "max_features": 0.05028962374371168,
-                "min_samples_leaf": 19,
-                "min_samples_split": 7,
+                "max_features": 0.2430708704950384,
+                "min_samples_leaf": 9,
+                "min_samples_split": 10,
                 "n_estimators": 100
             },
             "nodes_from": [
@@ -50,5 +56,5 @@
         "preprocessing",
         "data_preprocessor.pkl"
     ],
-    "descriptive_id": "(/n_scaling_{};)/n_treg_{'bootstrap': True, 'max_features': 0.05028962374371168, 'min_samples_leaf': 19, 'min_samples_split': 7, 'n_estimators': 100}"
+    "descriptive_id": "(/n_poly_features_{'degree': 2, 'interaction_only': False};)/n_treg_{'bootstrap': True, 'max_features': 0.2430708704950384, 'min_samples_leaf': 9, 'min_samples_split': 10, 'n_estimators': 100}"
 }

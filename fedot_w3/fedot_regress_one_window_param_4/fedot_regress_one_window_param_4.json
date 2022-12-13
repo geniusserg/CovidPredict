@@ -1,7 +1,7 @@
 {
     "total_pipeline_operations": [
         "scaling",
-        "lasso"
+        "treg"
     ],
     "depth": 2,
     "nodes": [
@@ -20,10 +20,22 @@
         },
         {
             "operation_id": 0,
-            "operation_type": "lasso",
-            "operation_name": "Lasso",
-            "custom_params": {},
-            "params": {},
+            "operation_type": "treg",
+            "operation_name": "ExtraTreesRegressor",
+            "custom_params": {
+                "bootstrap": false,
+                "max_features": 0.5564655045133338,
+                "min_samples_leaf": 1,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
+            "params": {
+                "bootstrap": false,
+                "max_features": 0.5564655045133338,
+                "min_samples_leaf": 1,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
             "nodes_from": [
                 1
             ],
@@ -38,5 +50,5 @@
         "preprocessing",
         "data_preprocessor.pkl"
     ],
-    "descriptive_id": "(/n_scaling_{};)/n_lasso_{}"
+    "descriptive_id": "(/n_scaling_{};)/n_treg_{'bootstrap': False, 'max_features': 0.5564655045133338, 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 100}"
 }
