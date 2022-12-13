@@ -1,0 +1,38 @@
+{
+    "total_pipeline_operations": [
+        "treg"
+    ],
+    "depth": 1,
+    "nodes": [
+        {
+            "operation_id": 0,
+            "operation_type": "treg",
+            "operation_name": "ExtraTreesRegressor",
+            "custom_params": {
+                "bootstrap": false,
+                "max_features": 0.7203898271730975,
+                "min_samples_leaf": 2,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
+            "params": {
+                "bootstrap": false,
+                "max_features": 0.7203898271730975,
+                "min_samples_leaf": 2,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "/n_treg_{'bootstrap': False, 'max_features': 0.7203898271730975, 'min_samples_leaf': 2, 'min_samples_split': 3, 'n_estimators': 100}"
+}

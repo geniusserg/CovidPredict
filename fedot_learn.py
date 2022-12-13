@@ -62,6 +62,7 @@ for WINDOW in range(3, 4):
 
     models = {}
     dinam_fact_columns = []
+    dinam_fact_columns.append(df.columns[29:42][9])
     dinam_fact_columns.append(df.columns[29:42][4])
     dinam_fact_columns.append(df.columns[29:42][2])
 

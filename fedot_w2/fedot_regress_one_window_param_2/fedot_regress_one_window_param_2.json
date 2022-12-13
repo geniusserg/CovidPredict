@@ -1,0 +1,60 @@
+{
+    "total_pipeline_operations": [
+        "isolation_forest_reg",
+        "svr"
+    ],
+    "depth": 2,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "isolation_forest_reg",
+            "operation_name": "IsolationForestRegImplementation",
+            "custom_params": {
+                "bootstrap": true,
+                "max_features": 0.07121840486563004,
+                "max_samples": 0.7000518041612382
+            },
+            "params": {
+                "bootstrap": true,
+                "max_features": 0.07121840486563004,
+                "max_samples": 0.7000518041612382
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "svr",
+            "operation_name": "LinearSVR",
+            "custom_params": {
+                "C": 0.022835327556155572,
+                "epsilon": 0.5441312032659783,
+                "loss": "epsilon_insensitive",
+                "tol": 0.09847977502476389
+            },
+            "params": {
+                "C": 0.022835327556155572,
+                "epsilon": 0.5441312032659783,
+                "loss": "epsilon_insensitive",
+                "tol": 0.09847977502476389
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(/n_isolation_forest_reg_{'bootstrap': True, 'max_features': 0.07121840486563004, 'max_samples': 0.7000518041612382};)/n_svr_{'C': 0.022835327556155572, 'epsilon': 0.5441312032659783, 'loss': 'epsilon_insensitive', 'tol': 0.09847977502476389}"
+}

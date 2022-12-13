@@ -81,4 +81,3 @@ for param_idx, param_name in enumerate(dinam_fact_columns):
         print(f"FAILED {param_name} {e}")
 
 df = pd.DataFrame(scores, index=["MSE", "R2"], columns = dinam_fact_columns)
-df.to_csv("fedot.csv")

@@ -1,0 +1,179 @@
+{
+    "total_pipeline_operations": [
+        "dtreg",
+        "fast_ica",
+        "rfr",
+        "gbr"
+    ],
+    "depth": 5,
+    "nodes": [
+        {
+            "operation_id": 3,
+            "operation_type": "dtreg",
+            "operation_name": "DecisionTreeRegressor",
+            "custom_params": {
+                "max_depth": 3,
+                "min_samples_leaf": 21,
+                "min_samples_split": 19
+            },
+            "params": {
+                "max_depth": 3,
+                "min_samples_leaf": 21,
+                "min_samples_split": 19
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "fast_ica",
+            "operation_name": "FastICAImplementation",
+            "custom_params": {
+                "n_components": 6
+            },
+            "params": {
+                "n_components": 6
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.09116728505712779,
+                "min_samples_leaf": 11,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.09116728505712779,
+                "min_samples_leaf": 11,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                3,
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 5,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.2815942146014835,
+                "min_samples_leaf": 6,
+                "min_samples_split": 2,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.2815942146014835,
+                "min_samples_leaf": 6,
+                "min_samples_split": 2,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                2,
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_5.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "gbr",
+            "operation_name": "GradientBoostingRegressor",
+            "custom_params": {
+                "alpha": 0.9082287577085977,
+                "learning_rate": 0.13236250403933908,
+                "loss": "huber",
+                "max_depth": 8,
+                "max_features": 0.5905237453031286,
+                "min_samples_leaf": 17,
+                "min_samples_split": 21,
+                "n_estimators": 100,
+                "subsample": 0.18738470851740963
+            },
+            "params": {
+                "alpha": 0.9082287577085977,
+                "learning_rate": 0.13236250403933908,
+                "loss": "huber",
+                "max_depth": 8,
+                "max_features": 0.5905237453031286,
+                "min_samples_leaf": 17,
+                "min_samples_split": 21,
+                "n_estimators": 100,
+                "subsample": 0.18738470851740963
+            },
+            "nodes_from": [
+                2,
+                5
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.4614506367892188,
+                "min_samples_leaf": 10,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": false,
+                "max_features": 0.4614506367892188,
+                "min_samples_leaf": 10,
+                "min_samples_split": 8,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "((((/n_dtreg_{'max_depth': 3, 'min_samples_leaf': 21, 'min_samples_split': 19};;/n_fast_ica_{'n_components': 6};)/n_rfr_{'n_jobs': -1, 'bootstrap': False, 'max_features': 0.09116728505712779, 'min_samples_leaf': 11, 'min_samples_split': 8, 'n_estimators': 100};;/n_dtreg_{'max_depth': 3, 'min_samples_leaf': 21, 'min_samples_split': 19};)/n_rfr_{'n_jobs': -1, 'bootstrap': True, 'max_features': 0.2815942146014835, 'min_samples_leaf': 6, 'min_samples_split': 2, 'n_estimators': 100};;(/n_dtreg_{'max_depth': 3, 'min_samples_leaf': 21, 'min_samples_split': 19};;/n_fast_ica_{'n_components': 6};)/n_rfr_{'n_jobs': -1, 'bootstrap': False, 'max_features': 0.09116728505712779, 'min_samples_leaf': 11, 'min_samples_split': 8, 'n_estimators': 100};)/n_gbr_{'alpha': 0.9082287577085977, 'learning_rate': 0.13236250403933908, 'loss': 'huber', 'max_depth': 8, 'max_features': 0.5905237453031286, 'min_samples_leaf': 17, 'min_samples_split': 21, 'n_estimators': 100, 'subsample': 0.18738470851740963};)/n_rfr_{'n_jobs': -1, 'bootstrap': False, 'max_features': 0.4614506367892188, 'min_samples_leaf': 10, 'min_samples_split': 8, 'n_estimators': 100}"
+}

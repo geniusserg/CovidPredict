@@ -1,0 +1,141 @@
+{
+    "total_pipeline_operations": [
+        "poly_features",
+        "treg",
+        "lgbmreg",
+        "pca",
+        "knnreg"
+    ],
+    "depth": 5,
+    "nodes": [
+        {
+            "operation_id": 4,
+            "operation_type": "poly_features",
+            "operation_name": "PolyFeaturesImplementation",
+            "custom_params": {
+                "degree": 5,
+                "interaction_only": true
+            },
+            "params": {
+                "degree": 5,
+                "interaction_only": true
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "treg",
+            "operation_name": "ExtraTreesRegressor",
+            "custom_params": {
+                "bootstrap": true,
+                "max_features": 0.9107567257859455,
+                "min_samples_leaf": 17,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
+            "params": {
+                "bootstrap": true,
+                "max_features": 0.9107567257859455,
+                "min_samples_leaf": 17,
+                "min_samples_split": 3,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "lgbmreg",
+            "operation_name": "LGBMRegressor",
+            "custom_params": {
+                "num_leaves": 49,
+                "colsample_bytree": 0.8504777895794133,
+                "subsample": 0.5734778423191909,
+                "subsample_freq": 10,
+                "learning_rate": 0.01901919499586657,
+                "n_estimators": 100,
+                "reg_alpha": 0.3609294471149119,
+                "reg_lambda": 1.139066049693525e-06
+            },
+            "params": {
+                "num_leaves": 49,
+                "colsample_bytree": 0.8504777895794133,
+                "subsample": 0.5734778423191909,
+                "subsample_freq": 10,
+                "learning_rate": 0.01901919499586657,
+                "n_estimators": 100,
+                "reg_alpha": 0.3609294471149119,
+                "reg_lambda": 1.139066049693525e-06
+            },
+            "nodes_from": [
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.9175824616950526
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.9175824616950526
+            },
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "knnreg",
+            "operation_name": "FedotKnnRegImplementation",
+            "custom_params": {
+                "n_neighbors": 29,
+                "p": 2,
+                "weights": "distance"
+            },
+            "params": {
+                "n_neighbors": 29,
+                "p": 2,
+                "weights": "distance"
+            },
+            "nodes_from": [
+                1,
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "((((/n_poly_features_{'degree': 5, 'interaction_only': True};)/n_treg_{'bootstrap': True, 'max_features': 0.9107567257859455, 'min_samples_leaf': 17, 'min_samples_split': 3, 'n_estimators': 100};)/n_lgbmreg_{'num_leaves': 49, 'colsample_bytree': 0.8504777895794133, 'subsample': 0.5734778423191909, 'subsample_freq': 10, 'learning_rate': 0.01901919499586657, 'n_estimators': 100, 'reg_alpha': 0.3609294471149119, 'reg_lambda': 1.139066049693525e-06};)/n_pca_{'svd_solver': 'full', 'n_components': 0.9175824616950526};;((/n_poly_features_{'degree': 5, 'interaction_only': True};)/n_treg_{'bootstrap': True, 'max_features': 0.9107567257859455, 'min_samples_leaf': 17, 'min_samples_split': 3, 'n_estimators': 100};)/n_lgbmreg_{'num_leaves': 49, 'colsample_bytree': 0.8504777895794133, 'subsample': 0.5734778423191909, 'subsample_freq': 10, 'learning_rate': 0.01901919499586657, 'n_estimators': 100, 'reg_alpha': 0.3609294471149119, 'reg_lambda': 1.139066049693525e-06};)/n_knnreg_{'n_neighbors': 29, 'p': 2, 'weights': 'distance'}"
+}
