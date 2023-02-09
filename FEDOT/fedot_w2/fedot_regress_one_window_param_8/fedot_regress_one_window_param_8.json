@@ -1,0 +1,113 @@
+{
+    "total_pipeline_operations": [
+        "normalization",
+        "pca",
+        "rfr"
+    ],
+    "depth": 3,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "normalization",
+            "operation_name": "NormalizationImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.9059269714284979
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.9059269714284979
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "normalization",
+            "operation_name": "NormalizationImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.41564319505361524
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.41564319505361524
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.7795265848565024,
+                "min_samples_leaf": 2,
+                "min_samples_split": 13,
+                "n_estimators": 100
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.7795265848565024,
+                "min_samples_leaf": 2,
+                "min_samples_split": 13,
+                "n_estimators": 100
+            },
+            "nodes_from": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "((/n_pca_{'svd_solver': 'full', 'n_components': 0.9059269714284979};)/n_normalization_{};;/n_normalization_{};;/n_pca_{'svd_solver': 'full', 'n_components': 0.41564319505361524};;/n_pca_{'svd_solver': 'full', 'n_components': 0.9059269714284979};)/n_rfr_{'n_jobs': -1, 'bootstrap': True, 'max_features': 0.7795265848565024, 'min_samples_leaf': 2, 'min_samples_split': 13, 'n_estimators': 100}"
+}

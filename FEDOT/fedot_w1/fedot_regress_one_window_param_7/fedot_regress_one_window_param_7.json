@@ -1,0 +1,44 @@
+{
+    "total_pipeline_operations": [
+        "lgbmreg"
+    ],
+    "depth": 1,
+    "nodes": [
+        {
+            "operation_id": 0,
+            "operation_type": "lgbmreg",
+            "operation_name": "LGBMRegressor",
+            "custom_params": {
+                "num_leaves": 17,
+                "colsample_bytree": 0.5057305524563376,
+                "subsample": 0.9527960666761841,
+                "subsample_freq": 10,
+                "learning_rate": 0.05632602224779307,
+                "n_estimators": 100,
+                "reg_alpha": 0.023988082126590423,
+                "reg_lambda": 6.461566999410481e-05
+            },
+            "params": {
+                "num_leaves": 17,
+                "colsample_bytree": 0.5057305524563376,
+                "subsample": 0.9527960666761841,
+                "subsample_freq": 10,
+                "learning_rate": 0.05632602224779307,
+                "n_estimators": 100,
+                "reg_alpha": 0.023988082126590423,
+                "reg_lambda": 6.461566999410481e-05
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "/n_lgbmreg_{'num_leaves': 17, 'colsample_bytree': 0.5057305524563376, 'subsample': 0.9527960666761841, 'subsample_freq': 10, 'learning_rate': 0.05632602224779307, 'n_estimators': 100, 'reg_alpha': 0.023988082126590423, 'reg_lambda': 6.461566999410481e-05}"
+}

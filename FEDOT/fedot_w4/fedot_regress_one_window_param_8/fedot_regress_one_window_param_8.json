@@ -1,0 +1,128 @@
+{
+    "total_pipeline_operations": [
+        "scaling",
+        "lasso",
+        "pca",
+        "ridge"
+    ],
+    "depth": 6,
+    "nodes": [
+        {
+            "operation_id": 5,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_5.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "lasso",
+            "operation_name": "Lasso",
+            "custom_params": {
+                "alpha": 1.540821579523502
+            },
+            "params": {
+                "alpha": 1.540821579523502
+            },
+            "nodes_from": [
+                5
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.9892938973478144
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.9892938973478144
+            },
+            "nodes_from": [
+                4,
+                5
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "lasso",
+            "operation_name": "Lasso",
+            "custom_params": {
+                "alpha": 6.73654612817655
+            },
+            "params": {
+                "alpha": 6.73654612817655
+            },
+            "nodes_from": [
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "lasso",
+            "operation_name": "Lasso",
+            "custom_params": {
+                "alpha": 7.064410803200206
+            },
+            "params": {
+                "alpha": 7.064410803200206
+            },
+            "nodes_from": [
+                2,
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "ridge",
+            "operation_name": "Ridge",
+            "custom_params": {
+                "alpha": 4.933202495666499
+            },
+            "params": {
+                "alpha": 4.933202495666499
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(((((/n_scaling_{};)/n_lasso_{'alpha': 1.540821579523502};;/n_scaling_{};)/n_pca_{'svd_solver': 'full', 'n_components': 0.9892938973478144};)/n_lasso_{'alpha': 6.73654612817655};;(/n_scaling_{};)/n_lasso_{'alpha': 1.540821579523502};)/n_lasso_{'alpha': 7.064410803200206};)/n_ridge_{'alpha': 4.933202495666499}"
+}
