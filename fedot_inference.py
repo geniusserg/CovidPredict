@@ -24,25 +24,26 @@ from fedot.core.pipelines.node import PrimaryNode, SecondaryNode
 
 class FedotCovidPredict():
     def __init__(self, models_directory:str = "fedot_pipelines"):
-        self.models = os.listdir("fedot_pipelines")
-        self.pipelines = {}
+        self.models = os.listdir(model_directory)
+        self.pipelines = {} # here stored fitted Pipelines
         for model in self.models:
             pipeline = Pipeline()
-            pipeline.load(f"fedot_pipelines/{model}/{model}.json")
+            pipeline.load(f"{model_directory}/{model}/{model}.json")
             self.pipelines[model] = pipeline
     
     def predict(self, df:pd.DataFrame):
-        state_vector = df.groupby("case").last() # use only last state vector
-        input_data = InputData(idx=state_vector.index, 
+        state_vector = df.groupby("case").last() #  Our models use only one vector
+        input_data = InputData(idx=state_vector.index,  # transform to InputData
                   features=state_vector, 
                   data_type=DataTypesEnum.table,
                   task=Task(TaskTypesEnum.regression))
 
-        prediction_vector = {}
+        #sequentially run pipelines on all parameters
+        prediction_vector = {} 
         for model in models:
-            prediction_vector[model] = pipelines[model].predict(input_data).predict #sequentially run pipelines
+            prediction_vector[model] = pipelines[model].predict(input_data).predict 
 
-        # Round categorical features 
+        # Round values of categorical features 
         result = pd.DataFrame(prediction_vector)
         result.loc[:, "снижение_сознания_dinam_fact"] = result["снижение_сознания_dinam_fact"].apply(lambda x: int(x))
         result.loc[:, "Cтепень тяжести по КТ_dinam_fact"] = result["Cтепень тяжести по КТ_dinam_fact"].apply(lambda x: int(x))
