@@ -23,10 +23,10 @@
             "operation_type": "rfr",
             "operation_name": "RandomForestRegressor",
             "custom_params": {
-                "n_jobs": -1
+                "n_jobs": 1
             },
             "params": {
-                "n_jobs": -1
+                "n_jobs": 1
             },
             "nodes_from": [
                 1
@@ -42,5 +42,5 @@
         "preprocessing",
         "data_preprocessor.pkl"
     ],
-    "descriptive_id": "(/n_scaling;)/n_rfr_{'n_jobs': -1}"
+    "descriptive_id": "(/n_scaling;)/n_rfr_{'n_jobs': 1}"
 }
