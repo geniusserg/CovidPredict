@@ -1,0 +1,54 @@
+{
+    "total_pipeline_operations": [
+        "lasso",
+        "knnreg"
+    ],
+    "depth": 2,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "lasso",
+            "operation_name": "Lasso",
+            "custom_params": {
+                "alpha": 2.858962277328077
+            },
+            "params": {
+                "alpha": 2.858962277328077
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "knnreg",
+            "operation_name": "FedotKnnRegImplementation",
+            "custom_params": {
+                "n_neighbors": 10,
+                "p": 1,
+                "weights": "distance"
+            },
+            "params": {
+                "n_neighbors": 10,
+                "p": 1,
+                "weights": "distance"
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(/n_lasso_{'alpha': 2.858962277328077};)/n_knnreg_{'n_neighbors': 10, 'p': 1, 'weights': 'distance'}"
+}

@@ -1,0 +1,128 @@
+{
+    "total_pipeline_operations": [
+        "scaling",
+        "isolation_forest_reg",
+        "treg",
+        "ransac_lin_reg",
+        "sgdr",
+        "rfr"
+    ],
+    "depth": 4,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "isolation_forest_reg",
+            "operation_name": "IsolationForestRegImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "treg",
+            "operation_name": "ExtraTreesRegressor",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "ransac_lin_reg",
+            "operation_name": "LinearRegRANSACImplementation",
+            "custom_params": {
+                "min_samples": 0.7003626979736505,
+                "residual_threshold": 78.23285087800693,
+                "max_trials": 170.10025100337276,
+                "max_skips": 322727.9301914361
+            },
+            "params": {
+                "min_samples": 0.7003626979736505,
+                "residual_threshold": 78.23285087800693,
+                "max_trials": 170.10025100337276,
+                "max_skips": 322727.9301914361
+            },
+            "nodes_from": [
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 5,
+            "operation_type": "sgdr",
+            "operation_name": "SGDRegressor",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_5.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "max_features": 0.06203213001946434,
+                "min_samples_split": 4,
+                "min_samples_leaf": 4,
+                "bootstrap": false
+            },
+            "params": {
+                "n_jobs": -1,
+                "max_features": 0.06203213001946434,
+                "min_samples_split": 4,
+                "min_samples_leaf": 4,
+                "bootstrap": false
+            },
+            "nodes_from": [
+                1,
+                2,
+                5
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(((/n_isolation_forest_reg;)/n_treg;)/n_ransac_lin_reg_{'min_samples': 0.7003626979736505, 'residual_threshold': 78.23285087800693, 'max_trials': 170.10025100337276, 'max_skips': 322727.9301914361};;((/n_isolation_forest_reg;)/n_treg;)/n_sgdr;;/n_scaling;)/n_rfr_{'n_jobs': -1, 'max_features': 0.06203213001946434, 'min_samples_split': 4, 'min_samples_leaf': 4, 'bootstrap': False}"
+}

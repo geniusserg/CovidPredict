@@ -1,0 +1,64 @@
+{
+    "total_pipeline_operations": [
+        "ransac_lin_reg",
+        "rfr"
+    ],
+    "depth": 2,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "ransac_lin_reg",
+            "operation_name": "LinearRegRANSACImplementation",
+            "custom_params": {
+                "min_samples": 0.6609021150233574,
+                "residual_threshold": 0.1726910274162411,
+                "max_trials": 131.6736923035249,
+                "max_skips": 52758.717466933325
+            },
+            "params": {
+                "min_samples": 0.6609021150233574,
+                "residual_threshold": 0.1726910274162411,
+                "max_trials": 131.6736923035249,
+                "max_skips": 52758.717466933325
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "max_features": 0.7806250699643007,
+                "min_samples_split": 13,
+                "min_samples_leaf": 19,
+                "bootstrap": true
+            },
+            "params": {
+                "n_jobs": -1,
+                "max_features": 0.7806250699643007,
+                "min_samples_split": 13,
+                "min_samples_leaf": 19,
+                "bootstrap": true
+            },
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(/n_ransac_lin_reg_{'min_samples': 0.6609021150233574, 'residual_threshold': 0.1726910274162411, 'max_trials': 131.6736923035249, 'max_skips': 52758.717466933325};)/n_rfr_{'n_jobs': -1, 'max_features': 0.7806250699643007, 'min_samples_split': 13, 'min_samples_leaf': 19, 'bootstrap': True}"
+}

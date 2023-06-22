@@ -1,0 +1,155 @@
+{
+    "total_pipeline_operations": [
+        "scaling",
+        "pca",
+        "ransac_lin_reg",
+        "rfr"
+    ],
+    "depth": 6,
+    "nodes": [
+        {
+            "operation_id": 5,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_5.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 4,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.9458857623401473
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.9458857623401473
+            },
+            "nodes_from": [
+                5
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_4.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 3,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                4
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_3.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 2,
+            "operation_type": "pca",
+            "operation_name": "PCAImplementation",
+            "custom_params": {
+                "svd_solver": "full",
+                "n_components": 0.8972265110506445
+            },
+            "params": {
+                "svd_solver": "full",
+                "n_components": 0.8972265110506445
+            },
+            "nodes_from": [
+                3
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_2.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 1,
+            "operation_type": "scaling",
+            "operation_name": "ScalingImplementation",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 6,
+            "operation_type": "ransac_lin_reg",
+            "operation_name": "LinearRegRANSACImplementation",
+            "custom_params": {
+                "min_samples": 0.5357203586926882,
+                "residual_threshold": 11.275754523857842,
+                "max_trials": 440.93762625246666,
+                "max_skips": 223646.12575043296
+            },
+            "params": {
+                "min_samples": 0.5357203586926882,
+                "residual_threshold": 11.275754523857842,
+                "max_trials": 440.93762625246666,
+                "max_skips": 223646.12575043296
+            },
+            "nodes_from": [
+                2
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_6.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "rfr",
+            "operation_name": "RandomForestRegressor",
+            "custom_params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.3773223786361894,
+                "min_samples_leaf": 3,
+                "min_samples_split": 21
+            },
+            "params": {
+                "n_jobs": -1,
+                "bootstrap": true,
+                "max_features": 0.3773223786361894,
+                "min_samples_leaf": 3,
+                "min_samples_split": 21
+            },
+            "nodes_from": [
+                1,
+                2,
+                6
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(((((/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.9458857623401473};)/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.8972265110506445};)/n_ransac_lin_reg_{'min_samples': 0.5357203586926882, 'residual_threshold': 11.275754523857842, 'max_trials': 440.93762625246666, 'max_skips': 223646.12575043296};;((((/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.9458857623401473};)/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.8972265110506445};)/n_scaling;;(((/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.9458857623401473};)/n_scaling;)/n_pca_{'svd_solver': 'full', 'n_components': 0.8972265110506445};)/n_rfr_{'n_jobs': -1, 'bootstrap': True, 'max_features': 0.3773223786361894, 'min_samples_leaf': 3, 'min_samples_split': 21}"
+}

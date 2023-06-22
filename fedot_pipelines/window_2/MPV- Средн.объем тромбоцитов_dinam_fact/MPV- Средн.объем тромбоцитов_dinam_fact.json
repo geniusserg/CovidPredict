@@ -1,0 +1,52 @@
+{
+    "total_pipeline_operations": [
+        "ransac_non_lin_reg",
+        "treg"
+    ],
+    "depth": 2,
+    "nodes": [
+        {
+            "operation_id": 1,
+            "operation_type": "ransac_non_lin_reg",
+            "operation_name": "NonLinearRegRANSACImplementation",
+            "custom_params": {
+                "min_samples": 0.458024190467773,
+                "residual_threshold": 7548.235162385353,
+                "max_trials": 203.55075053068154,
+                "max_skips": 126061.68746684595
+            },
+            "params": {
+                "min_samples": 0.458024190467773,
+                "residual_threshold": 7548.235162385353,
+                "max_trials": 203.55075053068154,
+                "max_skips": 126061.68746684595
+            },
+            "nodes_from": [],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_1.pkl"
+            ],
+            "rating": null
+        },
+        {
+            "operation_id": 0,
+            "operation_type": "treg",
+            "operation_name": "ExtraTreesRegressor",
+            "custom_params": {},
+            "params": {},
+            "nodes_from": [
+                1
+            ],
+            "fitted_operation_path": [
+                "fitted_operations",
+                "operation_0.pkl"
+            ],
+            "rating": null
+        }
+    ],
+    "preprocessing": [
+        "preprocessing",
+        "data_preprocessor.pkl"
+    ],
+    "descriptive_id": "(/n_ransac_non_lin_reg_{'min_samples': 0.458024190467773, 'residual_threshold': 7548.235162385353, 'max_trials': 203.55075053068154, 'max_skips': 126061.68746684595};)/n_treg"
+}
